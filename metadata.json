@@ -1,0 +1,7 @@
+{
+  "name": "VIPASIKA IT SOLUTION - Enterprise Excellence",
+  "description": "A premium enterprise technology solution website featuring next-level animations, high-performance service listings, and an integrated internship portal.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

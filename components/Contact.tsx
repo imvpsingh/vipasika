@@ -13,20 +13,22 @@ const Contact: React.FC = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setStatus('idle');
+    // setStatus aur setResponseMsg aapke state hooks hone chahiye
+    // const [status, setStatus] = useState('idle');
+    // const [responseMsg, setResponseMsg] = useState('');
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
-      name: formData.get('userName'),
-      email: formData.get('userEmail'),
-      whatsapp: formData.get('whatsapp'),
-      message: formData.get('message'),
+      name: formData.get('userName'), // Ensure name="userName" in input
+      email: formData.get('userEmail'), // Ensure name="userEmail" in input
+      whatsapp: formData.get('whatsapp'), // Ensure name="whatsapp" in input
+      message: formData.get('message'), // Ensure name="message" in textarea
       timestamp: new Date().toISOString()
     };
 
     try {
-      // Future-Proof Endpoint
-      const response = await fetch('https://www.vipasika.in/api/contact', {
+      // Fix: Added missing quote in the URL
+      const response = await fetch('https://sunilnath.com/vp/vipasika/contact.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -34,20 +36,23 @@ const Contact: React.FC = () => {
 
       const result = await response.json();
 
-      if (response.ok) {
+      if (response.ok && result.status === 'success') {
         setStatus('success');
-        setResponseMsg(result.message || "Briefing Initiated! Our team will WhatsApp you shortly.");
+        setResponseMsg(result.message);
         (e.target as HTMLFormElement).reset();
       } else {
-        throw new Error(result.message || "Failed to process request.");
+        throw new Error(result.message || "Server rejected the protocol.");
       }
     } catch (err: any) {
       setStatus('error');
-      setResponseMsg(err.message || "Network Error: Please check your API connection.");
+      setResponseMsg(err.message || "Terminal Error: Connection to Nodes failed.");
     } finally {
       setLoading(false);
-      // 5 second baad status reset karne ke liye
-      setTimeout(() => setStatus('idle'), 5000);
+      // Auto-reset message after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setResponseMsg('');
+      }, 5000);
     }
   };
 

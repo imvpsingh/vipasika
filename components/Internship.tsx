@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Briefcase, CheckCircle2, Award, Users, 
@@ -10,6 +11,7 @@ interface InternshipProps {
 }
 
 const Internship: React.FC<InternshipProps> = ({ onOpenModal }) => {
+  const navigate = useNavigate();
   const features = [
     { 
       icon: <Truck className="w-6 h-6" />, 
@@ -98,32 +100,13 @@ const Internship: React.FC<InternshipProps> = ({ onOpenModal }) => {
             </div>
             
            <div className="pt-8 flex justify-center md:justify-start">
-  <motion.button 
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-    onClick={onOpenModal}
-    className={`
-      group relative overflow-hidden transition-all duration-300
-      /* Mobile: Cute & Compact | Desktop: Pro Bold */
-      px-10 md:px-14 
-      py-4 md:py-6 
-      rounded-full md:rounded-[2.2rem] 
-      font-black text-xl md:text-2xl
-      /* Colors */
-      bg-white text-black hover:bg-blue-600 hover:text-white
-      shadow-[0_15px_30px_-5px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.4)]
-      flex items-center gap-4
-    `}
-  >
-    {/* Subtle Shine effect for extra premium feel */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer transition-transform duration-1000" />
-    
-    <span className="relative z-10">APPLY NOW</span>
-    
-    <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 bg-black text-white group-hover:bg-white group-hover:text-blue-600 rounded-full flex items-center justify-center transition-colors shadow-lg">
-       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-    </div>
-  </motion.button>
+   <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/internship')}
+                className="bg-white text-black px-10 py-5 rounded-full font-black text-xl flex items-center gap-4 hover:bg-blue-600 hover:text-white transition-all shadow-xl"
+              > Start Journey<ArrowRight size={20} />
+              </motion.button>
 </div>
           </motion.div>
 

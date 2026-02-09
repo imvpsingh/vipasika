@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, Rocket, ArrowRight, Zap, Cpu, Globe, MousePointer2, Sparkles } from 'lucide-react';
 
@@ -7,6 +8,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
+  const navigate = useNavigate();
   return (
     <section id="home" className="relative min-h-screen pt-24 md:pt-32 pb-10 overflow-hidden bg-[#030712] flex flex-col items-center justify-center">
       
@@ -66,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           </motion.button>
 
           <motion.button 
-            onClick={onOpenModal}
+            onClick={() => navigate('/internship')}
             whileTap={{ scale: 0.98 }}
             className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 rounded-xl md:rounded-2xl border border-white/10 text-white font-black text-sm md:text-lg flex items-center justify-center gap-3 backdrop-blur-md transition-all hover:bg-white/5"
           >

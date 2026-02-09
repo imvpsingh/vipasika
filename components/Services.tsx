@@ -97,38 +97,68 @@ const serviceData = [
 const Services: React.FC = () => {
   const [selected, setSelected] = useState<typeof serviceData[0] | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [responseMsg, setResponseMsg] = useState('');
 
   // --- API Submission Handler ---
-  const handleFormSubmit = async (e: React.FormEvent) => {
+const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setStatus('idle');
 
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formElement = e.target as HTMLFormElement;
+    const formData = new FormData(formElement);
+    
+    // Mapping keys to match what your API expects
     const payload = {
       name: formData.get('userName'),
+      email: formData.get('userEmail'),
       whatsapp: formData.get('whatsapp'),
-      concern: formData.get('concern'),
-      requestedService: selected?.title,
+      // Important: Mapping 'concern' from textarea to 'message' for API
+      message: `[Service: ${selected?.title}] - ${formData.get('concern')}`,
       timestamp: new Date().toISOString()
     };
 
     try {
-      // Replace with your actual API endpoint
-      const response = await fetch('YOUR_API_ENDPOINT_HERE', {
+      const response = await fetch('https://sunilnath.com/vp/vipasika/contact.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json' 
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        alert("Briefing Received! Our Lead Architect will contact you on WhatsApp.");
-        setIsFormOpen(false);
+      // Pehle text check karein agar JSON parse fail ho jaye
+      const text = await response.text();
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch (pErr) {
+        throw new Error("Invalid Server Response Format");
       }
-    } catch (err) {
-      alert("Submission failed. Please check your connection.");
+
+      if (response.ok && (result.status === 'success' || result.success === true)) {
+        setStatus('success');
+        setResponseMsg(result.message || "Briefing Received!");
+        formElement.reset();
+        // Modal close karne ke liye delay
+        setTimeout(() => setIsFormOpen(false), 2000);
+      } else {
+        throw new Error(result.message || "Server rejected the protocol.");
+      }
+    } catch (err: any) {
+      console.error("Submission Error:", err);
+      setStatus('error');
+      setResponseMsg(err.message || "Terminal Error: Connection failed.");
     } finally {
       setLoading(false);
+      // Auto-reset status
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
     }
   };
 
@@ -318,6 +348,8 @@ const Services: React.FC = () => {
 
         <form onSubmit={handleFormSubmit} className="space-y-6">
           <input name="userName" required placeholder="Full Name" className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-4 px-6 text-white focus:border-blue-500 outline-none" />
+          {/* <input name="userName" required placeholder="Full Name" className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-4 px-6 text-white focus:border-blue-500 outline-none" /> */}
+          <input name="userEmail" required type="email" placeholder="Email Address" className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-4 px-6 text-white focus:border-blue-500 outline-none" />
           <input name="whatsapp" required type="tel" placeholder="WhatsApp Number" className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-4 px-6 text-white focus:border-blue-500 outline-none" />
           <textarea name="concern" required rows={3} placeholder="Project vision..." className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-4 px-6 text-white focus:border-blue-500 outline-none resize-none" />
           <button type="submit" className="w-full py-5 bg-blue-600 text-white rounded-2xl font-black text-lg hover:bg-blue-500 shadow-xl active:scale-95 transition-all">

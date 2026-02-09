@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
           </div>
           <motion.button 
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            onClick={onOpenModal}
+            onClick={() => navigate('/internship')}
             className="bg-blue-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-3 shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:bg-blue-500 transition-all"
           >
             Start Journey <ArrowRight size={14} />

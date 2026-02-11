@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
 
   const navLinks = [
     { name: 'PANEL', href: 'services', icon: <LayoutGrid size={18} />, isExternal: false },
-    { name: 'INTERNSHIP', href: '/internship', icon: <Zap size={18} />, isExternal: false },
+    { name: 'INTERNSHIP', href: '/internship', icon: <Zap size={18} />, isExternal: true },
     { name: 'VERIFY', href: '/verify', icon: <Award size={18} />, isExternal: true },
     { name: 'SUPPORT', href: 'contact', icon: <Mail size={18} />, isExternal: false },
   ];

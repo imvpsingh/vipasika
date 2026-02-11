@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
           className="flex items-center gap-2 group cursor-pointer"
         >
           <img 
-            src="assets/logo.png" 
+            src="/assets/logo.png" 
             alt="VIPASIKA Logo" 
             className="h-8 md:h-10 w-auto object-contain transition-transform hover:scale-110" 
           />
@@ -116,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
             >
               <div className="p-6 flex justify-between items-center border-b border-white/5">
                 <div className="flex items-center gap-2">
-                  <img src="assets/logo.png" alt="Logo" className="h-8 w-auto" />
+                  <img src="/assets/logo.png" alt="Logo" className="h-8 w-auto" />
                   <span className="text-sm font-black text-white tracking-widest uppercase italic">VIPASIKA</span>
                 </div>
                 <button onClick={() => setMobileMenu(false)} className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-white">

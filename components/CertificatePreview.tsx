@@ -95,7 +95,7 @@ const CertificatePreview: React.FC = () => {
                     <div className="absolute inset-0 bg-blue-400/20 blur-xl rounded-full scale-150" />
 
                     <img
-                      src="assets/logo.png"
+                      src="/assets/logo.png"
                       alt="VIPASIKA Logo"
                       className="relative h-10 md:h-14 w-auto object-contain transition-transform hover:scale-110 drop-shadow-sm"
                     />

@@ -30,9 +30,14 @@ const Footer: React.FC<FooterProps> = ({ setActiveLegal }) => {
           {/* Brand & Mission */}
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <img 
+          src="assets/logo.png" 
+          alt="VIPASIKA Logo" 
+          className="h-12 md:h-16 w-auto object-contain transition-transform hover:scale-110" 
+        />
+              {/* <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
                 <Cpu className="text-white" size={26} />
-              </div>
+              </div> */}
               <span className="text-2xl font-black tracking-tighter text-white">
                 VIPASIKA 🦬
                 {/* <span className="text-blue-500 italic">.IT</span> */}
@@ -86,7 +91,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveLegal }) => {
               <MapPin className="text-blue-500 shrink-0" size={20} />
               <p className="text-sm font-bold leading-relaxed">
                 Vipasika IT Solutions, <br />
-                Sk Plaza, Bhilwara, <br />
+                Sk Plaza, Jaipur, <br />
                 Rajasthan 311605, India
               </p>
             </div>

@@ -83,7 +83,7 @@ const Contact: React.FC = () => {
               {[
                 { icon: <Mail size={22} />, label: "Email Us", val: "support@vipasika.in", color: "blue" },
                 { icon: <Phone size={22} />, label: "WhatsApp Support", val: "+91 766-566-5532", color: "green" },
-                { icon: <MapPin size={22} />, label: "Global HQ", val: "Bhilwara, Rajasthan, IND.", color: "purple" }
+                { icon: <MapPin size={22} />, label: "Global HQ", val: "Jaipur, Rajasthan, IND.", color: "purple" }
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-6 p-4 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all group">
                   <div className={`w-12 h-12 rounded-2xl bg-${item.color}-500/10 flex items-center justify-center text-${item.color}-500 group-hover:bg-${item.color}-500 group-hover:text-white transition-all shadow-lg`}>

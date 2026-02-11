@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, Menu, X, ArrowRight, Zap, Globe, ShieldCheck, LayoutGrid, Award, Mail } from 'lucide-react';
+import { Menu, X, ArrowRight, Zap, Globe, ShieldCheck, LayoutGrid, Award, Mail } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavbarProps {
@@ -20,19 +20,17 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   }, []);
 
   const navLinks = [
-    { name: 'Solutions', href: 'services', icon: <LayoutGrid size={18} />, isExternal: false },
-    { name: 'Internship', href: 'internship', icon: <Zap size={18} />, isExternal: false },
-    { name: 'Verification', href: '/verify', icon: <Award size={18} />, isExternal: true }, // New Page Link
-    { name: 'Contact', href: 'contact', icon: <Mail size={18} />, isExternal: false },
+    { name: 'PANEL', href: 'services', icon: <LayoutGrid size={18} />, isExternal: false },
+    { name: 'INTERNSHIP', href: '/internship', icon: <Zap size={18} />, isExternal: false },
+    { name: 'VERIFY', href: '/verify', icon: <Award size={18} />, isExternal: true },
+    { name: 'SUPPORT', href: 'contact', icon: <Mail size={18} />, isExternal: false },
   ];
 
   const handleNavAction = (link: any) => {
     setMobileMenu(false);
     if (link.isExternal) {
-      // Navigates to the Verify Page
       navigate(link.href);
     } else {
-      // If we are on verify page, go home first then scroll
       if (location.pathname !== '/') {
         navigate('/');
         setTimeout(() => {
@@ -45,57 +43,59 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 px-4 md:px-10 ${scrolled ? 'py-4' : 'py-8'}`}>
-      <div className={`max-w-7xl mx-auto rounded-2xl md:rounded-full px-4 md:px-10 py-3 flex justify-between items-center transition-all duration-500 border backdrop-blur-2xl ${scrolled ? 'bg-black/80 border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]' : 'bg-transparent border-transparent'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 px-4 md:px-10 ${scrolled ? 'py-3' : 'py-6'}`}>
+      <div className={`max-w-7xl mx-auto rounded-2xl md:rounded-full px-4 md:px-8 py-2.5 flex justify-between items-center transition-all duration-500 border backdrop-blur-2xl ${
+        scrolled 
+          ? 'bg-black/80 border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]' 
+          : 'bg-transparent border-transparent shadow-none' // Force transparent when scroll is 0
+      }`}>
         
         {/* Logo Section */}
         <div 
           onClick={() => navigate('/')}
-          className="flex items-center gap-3 group cursor-pointer"
+          className="flex items-center gap-2 group cursor-pointer"
         >
-          <div className="relative">
-            <motion.div 
-              whileHover={{ rotate: 90 }}
-              className="w-9 h-9 md:w-10 md:h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white shadow-lg"
-            >
-              <Cpu size={20} />
-            </motion.div>
-          </div>
-          <span className="text-lg md:text-2xl font-black tracking-tighter text-white uppercase">
-            VIPASIKA 🦬
-            {/* <span className="text-blue-500 italic">.IT</span> */}
+          <img 
+            src="assets/logo.png" 
+            alt="VIPASIKA Logo" 
+            className="h-8 md:h-10 w-auto object-contain transition-transform hover:scale-110" 
+          />
+          <span className="text-base md:text-xl font-black tracking-tighter text-white uppercase italic">
+            VIPASIKA
           </span>
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-6">
-          <div className="flex items-center gap-2 bg-white/5 border border-white/5 p-1 rounded-full px-4 font-bold uppercase tracking-widest text-[10px]">
+        {/* Desktop Navigation - Elite Width & Spacing */}
+        <div className="hidden lg:flex items-center gap-8">
+          <div className="flex items-center gap-2 bg-white/5 border border-white/10 p-1.5 rounded-full px-4 font-bold uppercase tracking-widest text-[10px]">
             {navLinks.map((link) => (
               <button 
                 key={link.name} 
                 onClick={() => handleNavAction(link)}
-                className="px-4 py-2 text-gray-400 hover:text-white transition-all relative group"
+                className="px-5 py-2 text-gray-400 hover:text-white transition-all relative group"
               >
                 {link.name}
-                <span className="absolute bottom-1 left-1/2 w-0 h-[2px] bg-blue-500 transition-all group-hover:w-1/3 group-hover:left-1/3" />
+                <span className="absolute bottom-1.5 left-1/2 w-0 h-[2px] bg-blue-500 transition-all group-hover:w-1/3 group-hover:left-1/3" />
               </button>
             ))}
           </div>
+
           <motion.button 
-            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/internship')}
-            className="bg-blue-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-3 shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:bg-blue-500 transition-all"
+            className="bg-blue-600 text-white px-10 py-3 rounded-full text-[10px] font-extrabold uppercase tracking-[0.25em] flex items-center gap-3 shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:bg-blue-500 transition-all"
           >
-            Start Journey <ArrowRight size={14} />
+            START JOURNEY <ArrowRight size={14} />
           </motion.button>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="lg:hidden w-11 h-11 flex items-center justify-center text-white bg-white/5 rounded-xl border border-white/10 active:scale-90 transition-all" 
+          className="lg:hidden w-10 h-10 flex items-center justify-center text-white bg-white/5 rounded-xl border border-white/10 active:scale-90 transition-all" 
           onClick={() => setMobileMenu(true)}
         >
-          <Menu size={22} />
+          <Menu size={20} />
         </button>
       </div>
 
@@ -112,14 +112,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
             <motion.div 
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[85%] max-w-[360px] bg-[#050505] z-[2001] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] border-l border-white/5 flex flex-col lg:hidden"
+              className="fixed top-0 right-0 h-full w-[85%] max-w-[340px] bg-[#050505] z-[2001] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] border-l border-white/5 flex flex-col lg:hidden"
             >
               <div className="p-6 flex justify-between items-center border-b border-white/5">
                 <div className="flex items-center gap-2">
-                  <Cpu className="text-blue-500" size={24} />
-                  <span className="text-sm font-black text-white tracking-widest uppercase italic">Navigator</span>
+                  <img src="assets/logo.png" alt="Logo" className="h-8 w-auto" />
+                  <span className="text-sm font-black text-white tracking-widest uppercase italic">VIPASIKA</span>
                 </div>
-                <button onClick={() => setMobileMenu(false)} className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-white active:bg-blue-600 transition-colors">
+                <button onClick={() => setMobileMenu(false)} className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-white">
                   <X size={20} />
                 </button>
               </div>
@@ -135,14 +135,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-blue-500 transition-colors">
                         {link.icon}
                       </div>
-                      <span className="text-lg font-bold text-gray-300 group-hover:text-white uppercase tracking-tight">{link.name}</span>
+                      <span className="text-base font-bold text-gray-300 group-hover:text-white uppercase tracking-tight">{link.name}</span>
                     </div>
                     <ChevronRight size={18} className="text-gray-600 group-hover:text-blue-500 transition-all" />
                   </motion.button>
                 ))}
               </div>
 
-              <div className="mt-auto p-6 space-y-6">
+              <div className="mt-auto p-6 space-y-6 mb-6"> {/* Bottom Margin for Android Keys */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center">
                     <Globe size={18} className="text-blue-500 mb-2" />
@@ -156,12 +156,12 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
                 
                 <button 
                   onClick={() => { setMobileMenu(false); onOpenModal(); }}
-                  className="w-full bg-blue-600 py-5 rounded-2xl font-black text-white flex items-center justify-center gap-3 active:scale-95 transition-all shadow-lg"
+                  className="w-full bg-blue-600 py-4 rounded-2xl font-black text-white flex items-center justify-center gap-3 active:scale-95 transition-all shadow-lg text-xs"
                 >
-                  <Zap size={18} fill="currentColor" /> GET STARTED
+                  <Zap size={16} fill="currentColor" /> GET STARTED
                 </button>
                 
-                <p className="text-center text-[8px] text-gray-600 font-bold uppercase tracking-[0.3em]">
+                <p className="text-center text-[7px] text-gray-600 font-bold uppercase tracking-[0.3em]">
                   © Vipasika Protocol 2026
                 </p>
               </div>

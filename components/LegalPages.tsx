@@ -107,7 +107,7 @@ const LegalPages: React.FC<LegalProps> = ({ activeSection }) => {
               </div>
               <div className="flex gap-3 md:gap-5 items-start p-4 md:p-6 rounded-2xl md:rounded-3xl bg-white/[0.03] border border-white/5">
                 <Gavel size={20} className="text-yellow-500 shrink-0 mt-1 md:w-6 md:h-6" />
-                <p className="text-[11px] md:text-base font-medium text-gray-400"><strong className="text-white">Jurisdiction:</strong> Disputes subject to courts in <span className="text-white">Kota, Rajasthan</span>.</p>
+                <p className="text-[11px] md:text-base font-medium text-gray-400"><strong className="text-white">Jurisdiction:</strong> Disputes subject to courts in <span className="text-white">Jaipur, Rajasthan</span>.</p>
               </div>
             </div>
           </motion.div>

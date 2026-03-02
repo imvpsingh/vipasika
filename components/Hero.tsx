@@ -118,26 +118,28 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
       {/* --- STATS FOOTER --- */}
       <div className="mt-auto w-full max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-          {[
-            { title: "Students Trained", val: "40,000+", icon: <GraduationCap size={18} /> },
-            { title: "Industry Projects", val: "50+", icon: <Briefcase size={18} /> },
-            { title: "Performance Award", val: "₹75k+", icon: <Trophy size={18} /> },
-          ].map((stat, i) => (
-            <motion.div 
-              key={stat.title}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="p-3 md:p-6 rounded-2xl md:rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col items-center lg:items-start text-center lg:text-left gap-1 md:gap-2"
-            >
-                <div className="text-blue-500 opacity-60 mb-1">{stat.icon}</div>
-                <div className="text-[7px] md:text-[9px] font-black text-gray-500 uppercase tracking-widest">{stat.title}</div>
-                <div className="text-xl md:text-3xl font-black text-white uppercase italic tracking-tighter">{stat.val}</div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+  {/* Grid updated to col-4 for better desktop spacing */}
+  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+    {[
+      { title: "Students Trained", val: "40,000+", icon: <GraduationCap size={18} /> },
+      { title: "Job Placements", val: "10k+", icon: <Briefcase size={18} /> }, // New Placement Stat
+      { title: "Industry Projects", val: "50+", icon: <Zap size={18} /> }, // Icon updated to Zap for variety
+      { title: "Performance Award", val: "₹75k+", icon: <Trophy size={18} /> },
+    ].map((stat, i) => (
+      <motion.div 
+        key={stat.title}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.1 }}
+        className="p-3 md:p-6 rounded-2xl md:rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col items-center lg:items-start text-center lg:text-left gap-1 md:gap-2 hover:bg-white/[0.04] transition-colors group"
+      >
+          <div className="text-blue-500 opacity-60 mb-1 group-hover:scale-110 transition-transform">{stat.icon}</div>
+          <div className="text-[7px] md:text-[9px] font-black text-gray-500 uppercase tracking-widest">{stat.title}</div>
+          <div className="text-xl md:text-3xl font-black text-white uppercase italic tracking-tighter">{stat.val}</div>
+      </motion.div>
+    ))}
+  </div>
+</div>
     </section>
   );
 };

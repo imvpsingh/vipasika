@@ -150,7 +150,7 @@ const CertificatePreview: React.FC = () => {
                   </div>
 
                   <p className="text-[6px] md:text-[8px] text-gray-400 font-medium">
-                    Verify at <strong className="text-blue-500 underline">vipasika.it/verify</strong>
+                    Verify at <strong className="text-blue-500 underline">vipasika.com/verify</strong>
                   </p>
                 </div>
 

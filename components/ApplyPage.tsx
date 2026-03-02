@@ -194,7 +194,7 @@ const ApplyPage: React.FC = () => {
 
                 {/* Tenure/Duration Selection */}
                 <div className="space-y-2">
-                  <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.2em] ml-2">Duration / Subscription Plan</label>
+                  <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.2em] ml-2">Duration / Regisration Fee</label>
                   <div className="grid grid-cols-2 gap-2 md:gap-3">
                     {[
                       { l: "1 Month", p: "₹199" },

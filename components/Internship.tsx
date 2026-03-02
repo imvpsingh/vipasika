@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Briefcase, CheckCircle2, Award, Users, 
-  ArrowRight, Sparkles, Truck, Globe, Rocket 
+  ArrowRight, Sparkles, Truck, Globe, Rocket, 
+  Clock
 } from 'lucide-react';
 
 interface InternshipProps {
@@ -14,10 +15,10 @@ const Internship: React.FC<InternshipProps> = ({ onOpenModal }) => {
   const navigate = useNavigate();
   const features = [
     { 
-      icon: <Truck className="w-6 h-6" />, 
-      title: 'Hardcopy Delivery', 
-      desc: 'Get your physical certificates delivered straight to your doorstep.' 
-    },
+      icon: <Clock className="w-6 h-6 text-blue-500" />, 
+  title: 'Daily 2 Hour Work', 
+  desc: 'Flexible micro-internship model designed for students. Contribute just 2 hours daily to master high-end engineering.'
+},
     { 
       icon: <Globe className="w-6 h-6" />, 
       title: '100% Online/Remote', 

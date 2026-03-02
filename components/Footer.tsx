@@ -97,7 +97,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveLegal }) => {
             </div>
             <div className="flex items-center gap-4 text-gray-500 group cursor-pointer">
               <Mail className="text-blue-500 group-hover:scale-110 transition-transform" size={20} />
-              <p className="text-sm font-bold group-hover:text-white transition-colors underline-offset-4 decoration-blue-500">support@vipasika.in</p>
+              <p className="text-sm font-bold group-hover:text-white transition-colors underline-offset-4 decoration-blue-500">support@vipasika.com</p>
             </div>
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center gap-3 group hover:border-blue-500/30 transition-all">
               <ShieldCheck className="text-green-500 group-hover:scale-110 transition-transform" size={20} />

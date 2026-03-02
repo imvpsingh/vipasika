@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Send, Phone, Mail, MapPin, Loader2, 
-  MessageSquare, User, Globe, Instagram, Linkedin, Twitter, CheckCircle2, AlertCircle 
+  MessageSquare, User, Globe, Instagram, Linkedin, Twitter, CheckCircle2, AlertCircle, MessageCircle
 } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
 
             <div className="space-y-6">
               {[
-                { icon: <Mail size={22} />, label: "Email Us", val: "support@vipasika.in", color: "blue" },
+                { icon: <Mail size={22} />, label: "Email Us", val: "support@vipasika.com", color: "blue" },
                 { icon: <Phone size={22} />, label: "WhatsApp Support", val: "+91 766-566-5532", color: "green" },
                 { icon: <MapPin size={22} />, label: "Global HQ", val: "Jaipur, Rajasthan, IND.", color: "purple" }
               ].map((item, i) => (
@@ -98,12 +98,19 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="pt-8 flex gap-4">
-              {[Instagram, Linkedin, Twitter, Globe].map((Icon, i) => (
-                <a key={i} href="#" className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:bg-blue-600 transition-all">
-                  <Icon size={20} />
-                </a>
-              ))}
-            </div>
+  {[Phone, Linkedin, Twitter, Globe].map((Icon, i) => (
+    <a 
+      key={i} 
+      // WhatsApp Redirect Link with Number and Custom Message
+      href="https://wa.me/917665665532?text=Hello%20Vipasika" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:bg-blue-600 transition-all shadow-lg hover:shadow-green-600/20"
+    >
+      <Icon size={20} />
+    </a>
+  ))}
+</div>
           </motion.div>
 
           {/* Right Side: Pro Form */}

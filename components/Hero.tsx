@@ -122,7 +122,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           {[
             { title: "Students Trained", val: "40,000+", icon: <GraduationCap size={18} /> },
             { title: "Industry Projects", val: "50+", icon: <Briefcase size={18} /> },
-            { title: "Performance Award", val: "₹3,000", icon: <Trophy size={18} /> },
+            { title: "Performance Award", val: "₹75k+", icon: <Trophy size={18} /> },
           ].map((stat, i) => (
             <motion.div 
               key={stat.title}
